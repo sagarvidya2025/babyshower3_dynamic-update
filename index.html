@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Invitation | Vinayaka & Revati</title>
+    <style>
+        body, html { 
+            margin: 0; padding: 0; 
+            background-color: #FFFDF5; 
+            font-family: 'Arial', sans-serif; 
+            color: #0A1931; 
+            overflow-x: hidden;
+        }
+
+        /* 1. TOP HEADER (Prayer Section) */
+        .prayer-header {
+            width: 100%;
+            background-color: white;
+            padding: 10px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+            z-index: 100;
+        }
+
+        .deity { 
+            color: #B8860B; 
+            font-weight: 700; 
+            font-size: 0.85rem; 
+            margin: 0;
+            opacity: 0;
+            transition: opacity 0.8s;
+            text-align: center;
+        }
+        .deity.visible { opacity: 1; }
+
+        /* 2. INTRO SECTION */
+        .intro {
+            height: 100vh;
+            background: url('intro.png.jpeg') no-repeat center center/cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: center;
+            padding-bottom: 50px;
+        }
+
+        .event-title { 
+            background: rgba(255, 255, 255, 0.9);
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border: 2px solid #B8860B;
+            margin-bottom: 15px;
+        }
+
+        /* 3. STAGE SECTION (background_g Focus) */
+        .stage {
+            background: url('background_g.jpeg') center/cover no-repeat;
+            background-attachment: fixed; /* Parallax effect for desktop */
+            min-height: 120vh; /* Long enough to show the whole art */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 60px 20px;
+        }
+
+        /* Glassmorphism Cards - Elegant & Transparent */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.1); 
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1.5px solid rgba(255, 255, 255, 0.3);
+            border-radius: 25px;
+            padding: 40px 20px;
+            text-align: center;
+            width: 85%;
+            max-width: 550px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+        }
+
+        .glass-card h2 { color: #B8860B; margin: 0 0 10px 0; font-size: 2rem; text-shadow: 1px 1px 2px white; }
+        .glass-card p { font-size: 1.3rem; font-weight: bold; margin: 0; }
+
+        /* 4. FINALE SECTION (Parents & Venue) */
+        .finale {
+            background-color: #0A1931;
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .parents-final {
+            max-width: 600px;
+            margin: 0 auto 60px auto;
+        }
+
+        .parents-img-circle {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            border: 4px solid #B8860B;
+            object-fit: cover;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 16px 35px;
+            background: #B8860B;
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            margin-top: 25px;
+            transition: transform 0.3s;
+        }
+        .btn:hover { transform: scale(1.05); }
+
+        @media (orientation: landscape) {
+            .prayer-header { flex-direction: row; justify-content: space-around; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="prayer-header">
+        <p class="deity" id="d1">Shri Shingataluru Veerabhadeshwara Namaha</p>
+        <p class="deity" id="d2">Shri Gurudeva Prasanna</p>
+        <p class="deity" id="d3">Shri Bhati Siddheshwaraswamy Namaha</p>
+    </header>
+
+    <div class="intro">
+        <h4 class="event-title">Vinayaka & Revati's Baby Shower</h4>
+        <button class="btn" id="playBtn" style="background: white; color: #B8860B; border: 2px solid #B8860B; margin-bottom: 40px;">🔊 Play Music</button>
+    </div>
+
+    <div class="stage">
+        <div class="glass-card">
+            <h2>Our Wishes</h2>
+            <p>"Join us to welcome our little one with your love and blessings."</p>
+        </div>
+
+        <div class="glass-card">
+            <h2>Save the Date</h2>
+            <p style="font-size: 2.2rem; color: #B8860B; margin: 10px 0;">30 March 2026</p>
+            <p>Lunch: 12:30 PM Onwards</p>
+        </div>
+    </div>
+
+    <div class="finale">
+        <div class="parents-final">
+            <img src="Parents.jpeg" alt="Parents" class="parents-img-circle">
+            <p style="font-size: 0.9rem; letter-spacing: 2px; color: #B8860B;">PARENTS TO BE</p>
+            <h3 style="font-size: 1.8rem; margin: 10px 0;">Vinayaka & Revati Vinayaka</h3>
+        </div>
+
+        <hr style="border: 0; border-top: 1px solid rgba(184, 134, 11, 0.3); width: 50%; margin: 40px auto;">
+
+        <div class="venue-final">
+            <h2 style="color: #B8860B;">Function Venue</h2>
+            <p style="font-size: 1.2rem; line-height: 1.6;">
+                Pampaapati sabha bhavana, Opposite KEB office,<br> 
+                PB Road, Near Bustand, Ranebennur,<br>
+                Haveri Dist. Karnataka 581115
+            </p>
+            <a href="https://www.google.com/maps/search/?api=1&query=Pampaapati+bhavana+Ranebennur" target="_blank" class="btn">📍 Open in Google Maps</a>
+        </div>
+    </div>
+
+    <audio id="songAudio" src="correct_song.mpeg" loop></audio>
+
+    <script>
+        document.querySelectorAll('.deity').forEach((d, i) => {
+            setTimeout(() => d.classList.add('visible'), 300 + (i * 500));
+        });
+
+        const audio = document.getElementById('songAudio');
+        const playBtn = document.getElementById('playBtn');
+        playBtn.addEventListener('click', () => {
+            if (audio.paused) { 
+                audio.play(); 
+                playBtn.textContent = "⏸️ Pause Music"; 
+            } else { 
+                audio.pause(); 
+                playBtn.textContent = "🔊 Play Music"; 
+            }
+        });
+    </script>
+</body>
+</html>
