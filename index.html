@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Invitation | Vinayaka & Revati</title>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <style>
+        body, html { 
+            margin: 0; padding: 0; 
+            background-color: #FFFDF5; 
+            font-family: 'Arial', sans-serif; 
+            color: #0A1931; 
+            overflow-x: hidden;
+        }
+
+        /* 1. TOP HEADER */
+        .prayer-header {
+            width: 100%; background-color: white; padding: 10px 0;
+            display: flex; flex-direction: column; align-items: center; gap: 5px; z-index: 100;
+        }
+        .deity { 
+            color: #B8860B; font-weight: 700; font-size: 0.85rem; margin: 0;
+            opacity: 0; transition: opacity 0.8s; text-align: center;
+        }
+        .deity.visible { opacity: 1; }
+
+        /* 2. INTRO SECTION */
+        .intro {
+            height: 100vh;
+            background: url('intro.png.jpeg') no-repeat center center/cover;
+            display: flex; flex-direction: column; justify-content: flex-end; align-items: center;
+            padding-bottom: 50px;
+        }
+
+        .event-title { 
+            background: rgba(255, 255, 255, 0.2); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+            padding: 12px 25px; border-radius: 30px; font-size: 1.2rem; font-weight: bold;
+            border: 1.5px solid rgba(184, 134, 11, 0.5); margin-bottom: 20px;
+        }
+
+        .actions-row { display: flex; align-items: center; gap: 15px; margin-bottom: 40px; }
+
+        .btn {
+            display: inline-block; padding: 12px 25px; background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); color: #B8860B;
+            border-radius: 50px; font-weight: bold; border: 1.5px solid rgba(184, 134, 11, 0.5);
+            cursor: pointer; transition: 0.3s;
+        }
+
+        .tilt-icon { font-size: 1.5rem; animation: tiltPhone 2s infinite ease-in-out; display: inline-block; }
+        @keyframes tiltPhone { 0%, 100% { transform: rotate(0deg); } 25% { transform: rotate(-20deg); } 75% { transform: rotate(20deg); } }
+
+        /* 3. STAGE SECTION (background_g) */
+        .stage {
+            background: url('background_g.jpeg') center/cover no-repeat;
+            background-attachment: fixed; min-height: 100vh;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            padding: 60px 20px; gap: 20px;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3); border-radius: 25px; padding: 35px 20px;
+            text-align: center; width: 85%; max-width: 500px; opacity: 0; transform: translateY(40px);
+            transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .stage.visible .glass-card { opacity: 1; transform: translateY(0); }
+        .glass-card h2 { color: #B8860B; margin: 0 0 10px 0; font-size: 1.8rem; }
+        .glass-card p { font-size: 1.2rem; font-weight: bold; margin: 0; }
+
+        /* 4. FINALE SECTION */
+        .finale { background-color: #0A1931; color: white; padding: 80px 20px; text-align: center; position: relative; }
+        .parents-img-square { width: 300px; height: 300px; border-radius: 8px; border: 8px solid #B8860B; object-fit: cover; margin-bottom: 15  px; }
+        .btn-solid { background: #B8860B; color: white; border: none; margin-top: 25px; }
+
+        @media (orientation: landscape) { .prayer-header { flex-direction: row; justify-content: space-around; } }
+    </style>
+</head>
+<body>
+
+    <header class="prayer-header">
+        <p class="deity" id="d1">Shri Shingataluru Veerabhadeshwara Namaha</p>
+        <p class="deity" id="d2">Shri Gurudeva Prasanna</p>
+        <p class="deity" id="d3">Shri Bhati Siddheshwaraswamy Namaha</p>
+    </header>
+
+    <div class="intro">
+        <h4 class="event-title">Vinayaka & Revati's Baby Shower</h4>
+        <div class="actions-row">
+            <button class="btn" id="playBtn">🔊 Play Music</button>
+            <div class="tilt-icon">📱</div>
+        </div>
+    </div>
+
+    <div class="stage" id="info-stage">
+        <div class="glass-card">
+            <h2>Our Wishes</h2>
+            <p>"Join us to welcome our little one with your love and blessings."</p>
+        </div>
+        <div class="glass-card">
+            <h2>Save the Date</h2>
+            <p style="font-size: 2rem; color: #B8860B; margin: 10px 0;">30 March 2026</p>
+            <p>Lunch: 12:30 PM Onwards</p>
+        </div>
+    </div>
+
+    <div class="finale" id="finale-section">
+        <div class="parents-final">
+            <img src="Parents.jpeg" alt="Parents" class="parents-img-square">
+            <p style="font-size: 0.9rem; letter-spacing: 2px; color: #B8860B;">PARENTS TO BE</p>
+            <h3 style="font-size: 1.8rem; margin: 10px 0;">Vinayaka & Revati Vinayaka</h3>
+        </div>
+        <hr style="border: 0; border-top: 1px solid rgba(184, 134, 11, 0.3); width: 50%; margin: 40px auto;">
+        <div class="venue-final">
+            <h2 style="color: #B8860B;">Function Venue</h2>
+            <p style="font-size: 1.2rem; line-height: 1.6;">Pampaapati bhavana, Opposite KEB office,<br> PB Road, Ranebennur, Karnataka</p>
+            <a href="https://maps.google.com" target="_blank" class="btn btn-solid">📍 Open in Google Maps</a>
+        </div>
+    </div>
+
+    <audio id="songAudio" src="correct_song.mpeg" loop></audio>
+
+    <script>
+        // Prayers reveal
+        document.querySelectorAll('.deity').forEach((d, i) => {
+            setTimeout(() => d.classList.add('visible'), 300 + (i * 500));
+        });
+
+        // Trigger Cards and Flower Shower on Scroll
+        const infoStage = document.getElementById('info-stage');
+        const finale = document.getElementById('finale-section');
+        let showerStarted = false;
+
+        window.addEventListener('scroll', () => {
+            // Reveal info cards
+            if (infoStage.getBoundingClientRect().top < window.innerHeight * 0.8) {
+                infoStage.classList.add('visible');
+            }
+
+            // Trigger gentle flower shower at the finale
+            if (finale.getBoundingClientRect().top < window.innerHeight * 0.7 && !showerStarted) {
+                showerStarted = true;
+                continuousFlowerShower();
+            }
+        });
+
+        // Music Logic + Celebration Burst
+        const audio = document.getElementById('songAudio');
+        const playBtn = document.getElementById('playBtn');
+
+        playBtn.addEventListener('click', () => {
+            if (audio.paused) { 
+                audio.play(); 
+                playBtn.textContent = "⏸️ Pause Music";
+                // TRIGGER CELEBRATION BURST
+                confetti({
+                    particleCount: 150,
+                    spread: 70,
+                    origin: { y: 0.6 },
+                    colors: ['#B8860B', '#FFFDF5', '#FFD700']
+                });
+            } else { 
+                audio.pause(); 
+                playBtn.textContent = "🔊 Play Music"; 
+            }
+        });
+
+        // Continuous Gentle Flower/Paper fall for finale
+        function continuousFlowerShower() {
+            var end = Date.now() + (15 * 1000); // 15 seconds of flowers
+            var colors = ['#B8860B', '#ffffff', '#ffeb3b'];
+
+            (function frame() {
+              confetti({
+                particleCount: 2,
+                angle: 60,
+                spread: 55,
+                origin: { x: 0 },
+                colors: colors
+              });
+              confetti({
+                particleCount: 2,
+                angle: 120,
+                spread: 55,
+                origin: { x: 1 },
+                colors: colors
+              });
+
+              if (Date.now() < end) {
+                requestAnimationFrame(frame);
+              }
+            }());
+        }
+    </script>
+</body>
+</html>
